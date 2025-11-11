@@ -48,7 +48,7 @@
                         @endif
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th width="5%">No</th>
@@ -59,7 +59,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($roles as $role)
+                                    @foreach ($roles as $role)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>
@@ -102,11 +102,7 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="5" class="text-center">Tidak ada data role</td>
-                                        </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

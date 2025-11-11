@@ -48,7 +48,7 @@
                         @endif
 
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table class="table table-bordered table-striped" id="dataTable">
                                 <thead>
                                     <tr>
                                         <th width="5%">No</th>
@@ -60,9 +60,9 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($users as $user)
+                                    @foreach ($users as $user)
                                         <tr>
-                                            <td>{{ ($users->currentPage() - 1) * $users->perPage() + $loop->iteration }}
+                                            <td>{{ $loop->iteration }}
                                             </td>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->username }}</td>
@@ -102,17 +102,10 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">Tidak ada data user</td>
-                                        </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    <div class="card-footer clearfix">
-                        {{ $users->links('pagination::bootstrap-4') }}
                     </div>
                 </div>
             </div>
